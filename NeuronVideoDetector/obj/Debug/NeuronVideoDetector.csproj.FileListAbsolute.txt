@@ -1,0 +1,15 @@
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.Form1.resources
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.Properties.Resources.resources
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.csproj.GenerateResource.Cache
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\NeuronVideoDetector.exe
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\NeuronVideoDetector.pdb
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\Emgu.CV.UI.dll
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\Emgu.CV.World.dll
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\ZedGraph.dll
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\Emgu.CV.UI.xml
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\Emgu.CV.World.xml
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\ZedGraph.xml
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\bin\Debug\zh-CN\ZedGraph.resources.dll
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.exe
+C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.pdb

@@ -1,0 +1,16 @@
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\EmguConnect.exe
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\EmguConnect.pdb
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\Emgu.CV.UI.dll
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\Emgu.CV.World.dll
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\ZedGraph.dll
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\Emgu.CV.UI.xml
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\Emgu.CV.World.xml
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\ZedGraph.xml
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\bin\Debug\zh-CN\ZedGraph.resources.dll
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\obj\Debug\EmguConnect.csprojResolveAssemblyReference.cache
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\obj\Debug\EmguConnect.Properties.Resources.resources
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\obj\Debug\EmguConnect.csproj.GenerateResource.Cache
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\obj\Debug\EmguConnect.exe
+c:\users\админ\documents\visual studio 2012\Projects\EmguConnect\EmguConnect\obj\Debug\EmguConnect.pdb
+C:\Users\Админ\Documents\Visual Studio 2012\Projects\DPC_3D\EmguConnect\obj\Debug\EmguConnect.exe
+C:\Users\Админ\Documents\Visual Studio 2012\Projects\DPC_3D\EmguConnect\obj\Debug\EmguConnect.pdb
