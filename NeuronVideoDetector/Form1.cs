@@ -26,7 +26,9 @@ namespace NeuronVideoDetector
     public string OUTPUT_FOLDER_KUWAHARA = @"Kuwahara\";
     public string OUTPUT_FOLDER_SEPARATEDLAYERS = @"SeparatedLayers\";
     public string OUTPUT_FOLDER_COLORISED = @"Colorised\";
+    public string OUTPUT_FOLDER_CANNY = @"Canny\";
     public string TMP_FOLDER = @"TMP\";
+
 
     public bool DEBUG = true;
 
@@ -36,34 +38,46 @@ namespace NeuronVideoDetector
     public Form1()
     {
       InitializeComponent();
-      
-      Image<Gray, Byte> img = new Image<Gray,byte>(@"C:\Users\Admin\Desktop\Антон\NeuronVideoDetectorFolders\FilteredOutput\0.png");
-     
-      List<Image<Gray, Byte>> N_layers = new List<Image<Gray, byte>>();      
-      
+      DATA_ROOT = System.IO.Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\NeuronVideoDetectorFolders\";
+
+      Image<Gray, Byte> img = new Image<Gray, byte>(DATA_ROOT + OUTPUT_FOLDER_FLTR + "0.png");
+
+      List<Image<Gray, Byte>> N_layers = new List<Image<Gray, byte>>();
+
       N_layers = ProcessSingleFrame(img, KuwaharaMode.ExternalKuwahara, 0);
       List<Image<Gray, Byte>> N_Borders = CannyImages(N_layers);
-
-      Image<Bgr, Byte> bckg = new Image<Bgr, Byte>(img.Size);
-      Image<Bgr, Byte> color = new Image<Bgr, Byte>(img.Size);
-      
-
-      for (int i = 0; i < N_Borders.Count; i++)
-      {
-        CvInvoke.InsertChannel(N_Borders[i], color, 2);
-        CvInvoke.AddWeighted(color, 1.0, img.Convert<Bgr, Byte>(), 1.0, 0, bckg);
-        bckg.Resize(2.5, Inter.Area).Save(DATA_ROOT + TMP_FOLDER + "detecterd areas_0" + i.ToString() + DATASET_IMGTYPE);
-      }
-
 
       ProcessLayers(N_layers);
 
       Image<Gray, Byte> merged = MergeLayers(N_layers);
 
       merged.Save(DATA_ROOT + TMP_FOLDER + "merged.png");
-      for (int i = 0; i < N_layers.Count; i++) N_layers[i].Save(DATA_ROOT + TMP_FOLDER + "layer0" + i.ToString() + ".png");
+      for (int i = 0; i < N_layers.Count; i++) N_layers[i].Save(DATA_ROOT + OUTPUT_FOLDER_SEPARATEDLAYERS + "layer0" + i.ToString() + ".png");
+
+      DrawEdgesOnImg(N_Borders);
+
+      Image<Bgr, Byte> color = new Image<Bgr, byte>(N_Borders[0].Size.Width, N_Borders[0].Size.Height, new Bgr(0,0,0));
+      CvInvoke.InsertChannel(N_Borders[0], color, 0);
+      CvInvoke.InsertChannel(N_Borders[1], color, 1);
+      //CvInvoke.InsertChannel(N_Borders[2], color, 2);
+      color.Save(DATA_ROOT + TMP_FOLDER + "test.png");
+    }
+
+
+    public void DrawEdgesOnImg(List<Image<Gray, Byte>> N_egdes_Img)
+    {
+      Image<Bgr, Byte> bckg = new Image<Bgr, Byte>(N_egdes_Img[0].Size);
+      Image<Bgr, Byte> color = new Image<Bgr, Byte>(N_egdes_Img[0].Size);
+
+      for (int i = 0; i < N_egdes_Img.Count; i++)
+      {
+        CvInvoke.InsertChannel(N_egdes_Img[i], color, 2);
+        CvInvoke.AddWeighted(color, 1.0, N_egdes_Img[i].Convert<Bgr, Byte>(), 1.0, 0, bckg);
+        bckg.Resize(2.5, Inter.Area).Save(DATA_ROOT + OUTPUT_FOLDER_SEPARATEDLAYERS + "detected areas_0" + i.ToString() + DATASET_IMGTYPE);
+      }
 
     }
+
 
     public List<Image<Gray, Byte>> ProcessSingleFrame(Image<Gray, Byte> input, KuwaharaMode K, int number)
     {
@@ -116,8 +130,8 @@ namespace NeuronVideoDetector
           layers[i].Save(DATA_ROOT + TMP_FOLDER + DATASET_PREFIX + number.ToString() + "_" + prev + "_" + separation[i] + DATASET_IMGTYPE);
           prev = (int)separation[i];
 
-          if (i >= 10) layers[i].Save(DATA_ROOT + TMP_FOLDER + DATASET_PREFIX + number.ToString() + "_0" + i.ToString() + DATASET_IMGTYPE);
-          else layers[i].Save(DATA_ROOT + TMP_FOLDER + DATASET_PREFIX + number.ToString() + "_00" + i.ToString() + DATASET_IMGTYPE);
+          if (i >= 10) layers[i].Save(DATA_ROOT + TMP_FOLDER + @"ordered\" + DATASET_PREFIX + number.ToString() + "_0" + i.ToString() + DATASET_IMGTYPE);
+          else layers[i].Save(DATA_ROOT + TMP_FOLDER + @"ordered\" + DATASET_PREFIX + number.ToString() + "_00" + i.ToString() + DATASET_IMGTYPE);
         }
       }
   
@@ -180,7 +194,7 @@ namespace NeuronVideoDetector
       for (int i = 0; i < input.Count; i++)
       {
         cannyIm.Add(input[i].Canny(5, 255));
-        if (DEBUG) cannyIm[i].Save(DATA_ROOT + TMP_FOLDER + "canny_0"  + i.ToString() + DATASET_IMGTYPE);
+        if (DEBUG) cannyIm[i].Resize(6, Inter.Nearest).Save(DATA_ROOT + OUTPUT_FOLDER_CANNY + "canny_0"  + i.ToString() + DATASET_IMGTYPE);
       }
       return cannyIm;
     }
