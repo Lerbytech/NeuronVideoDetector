@@ -45,9 +45,31 @@ namespace NeuronVideoDetector
       List<Image<Gray, Byte>> N_layers = new List<Image<Gray, byte>>();
 
       N_layers = ProcessSingleFrame(img, KuwaharaMode.ExternalKuwahara, 0);
+
       List<Image<Gray, Byte>> N_Borders = CannyImages(N_layers);
 
+      if (DEBUG)
+      {
+        for (int i = 0; i < N_Borders.Count; i++)
+        {
+          N_Borders[i].Resize(6, Inter.Nearest).Save(DATA_ROOT + OUTPUT_FOLDER_CANNY + "canny_0" + i.ToString() + DATASET_IMGTYPE);
+        }
+      }
+
       ProcessLayers(N_layers);
+      List<Image<Gray, Byte>> Dilated = new List<Image<Gray, byte>>();
+
+      if (DEBUG)
+      {
+        Image<Gray, Byte> tmp_img = new Image<Gray,byte>(N_layers[0].Size);
+        for (int i = 0; i < Dilated.Count; i++)
+        {
+          CvInvoke.Canny(N_layers[i], tmp_img, 0, 255);
+          Dilated.Add(tmp_img);
+          tmp_img.Resize(6, Inter.Nearest).Save(DATA_ROOT + OUTPUT_FOLDER_CANNY + "canny_dilated_0" + i.ToString() + DATASET_IMGTYPE);
+        }
+      }
+
 
       Image<Gray, Byte> merged = MergeLayers(N_layers);
 
@@ -63,6 +85,7 @@ namespace NeuronVideoDetector
       color.Save(DATA_ROOT + TMP_FOLDER + "test.png");
     }
 
+    //----------------------------------------
 
     public void DrawEdgesOnImg(List<Image<Gray, Byte>> N_egdes_Img)
     {
@@ -75,35 +98,28 @@ namespace NeuronVideoDetector
         CvInvoke.AddWeighted(color, 1.0, N_egdes_Img[i].Convert<Bgr, Byte>(), 1.0, 0, bckg);
         bckg.Resize(2.5, Inter.Area).Save(DATA_ROOT + OUTPUT_FOLDER_SEPARATEDLAYERS + "detected areas_0" + i.ToString() + DATASET_IMGTYPE);
       }
-
     }
-
 
     public List<Image<Gray, Byte>> ProcessSingleFrame(Image<Gray, Byte> input, KuwaharaMode K, int number)
     {
       // Total time: 120-130 ms
-      // Kuwahara: 90-95ms
-    
+      // Kuwahara: 90-95ms    
       Image<Gray, Byte> medianImg = new Image<Gray, byte>(input.Size);
       Image<Gray, Byte> KuwaharaImg = new Image<Gray, byte>(input.Size);
       Image<Gray, Byte> ExternalKuwaharaImg = new Image<Gray, byte>(input.Size);
 
-     
       double Threshold_median = Tools.Separation.MedianPixel(input); //7 ms
       medianImg = input.ThresholdToZero(new Gray(Threshold_median)); //2ms
 
       long T; // work time of externalKuwahara
       int MaxValue;
 
-      
-      
       if (K == KuwaharaMode.NormalKuwahara) ;
       else if (K == KuwaharaMode.ExternalKuwahara)
       {
         medianImg.Save(DATA_ROOT + TMP_FOLDER + "medianImg_" + Threshold_median.ToString() + ".png");
         try
         {
-
           Tools.Filters.ExternalKuwaharaFilter(DATA_ROOT + TMP_FOLDER + "medianImg_" + Threshold_median.ToString() + ".png",
                                                 DATA_ROOT + TMP_FOLDER + "ExternalKuwaharaImg.png",
                                                 out T, out ExternalKuwaharaImg);
@@ -114,12 +130,11 @@ namespace NeuronVideoDetector
         }
       }
 
-     
       List<float> separation = Tools.Separation.CalculateSeparationValues(ExternalKuwaharaImg, (int)Threshold_median, out MaxValue); // 2 ms FUCK YEAH!!!!!!
 
       List<Image<Gray, Byte>> layers = new List<Image<Gray, byte>>();
 
-      layers = Tools.Separation.SeparateToLayers(ExternalKuwaharaImg, separation, (int)Threshold_median); // 5-9 ms
+      layers = Tools.Separation.SeparateToLayers(input, separation, (int)Threshold_median); // 5-9 ms
 
       if (DEBUG)
       {
@@ -133,18 +148,17 @@ namespace NeuronVideoDetector
           if (i >= 10) layers[i].Save(DATA_ROOT + TMP_FOLDER + @"ordered\" + DATASET_PREFIX + number.ToString() + "_0" + i.ToString() + DATASET_IMGTYPE);
           else layers[i].Save(DATA_ROOT + TMP_FOLDER + @"ordered\" + DATASET_PREFIX + number.ToString() + "_00" + i.ToString() + DATASET_IMGTYPE);
         }
+
       }
-  
 
       return layers;
     }
 
     public void ProcessLayers(List<Image<Gray, Byte>> input)
     {
-      foreach (var Im in input)
+      for ( int i = 0; i < input.Count; i++)
       {
-        Im.Dilate(1);
-        Im.Erode(1);
+        input[i] = input[i].Dilate(1).Erode(1);
       }
     }
 
@@ -179,25 +193,23 @@ namespace NeuronVideoDetector
       float[] Hist = new float[256];
       DH.CopyTo(Hist);
 
-      //Dictionary<int, 
       //find discretization for not null values of hisstogram and fill dictionary with colors
 
-
-      
       return result;
     }
 
     public List<Image<Gray, Byte>> CannyImages(List<Image<Gray, Byte>> input)
     {
       List<Image<Gray, Byte>> cannyIm = new List<Image<Gray, byte>>();
-    
       for (int i = 0; i < input.Count; i++)
       {
-        cannyIm.Add(input[i].Canny(5, 255));
-        if (DEBUG) cannyIm[i].Resize(6, Inter.Nearest).Save(DATA_ROOT + OUTPUT_FOLDER_CANNY + "canny_0"  + i.ToString() + DATASET_IMGTYPE);
+        
+        cannyIm.Add(input[i].Canny(0, 512));
+        //if (DEBUG) cannyIm[i].Resize(6, Inter.Nearest).Save(DATA_ROOT + OUTPUT_FOLDER_CANNY + "canny_0"  + i.ToString() + DATASET_IMGTYPE);
       }
       return cannyIm;
     }
 
   }
 }
+  

@@ -27,3 +27,4 @@ C:\Users\Админ\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\Ne
 C:\Users\Админ\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.Form1.resources
 C:\Users\Админ\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.Properties.Resources.resources
 C:\Users\Админ\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.csproj.GenerateResource.Cache
+C:\Users\Админ\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Debug\NeuronVideoDetector.csprojResolveAssemblyReference.cache

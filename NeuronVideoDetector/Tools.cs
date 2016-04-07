@@ -500,7 +500,6 @@ namespace NeuronVideoDetector
         return result;
       }
 
-
     }
   }
 }
