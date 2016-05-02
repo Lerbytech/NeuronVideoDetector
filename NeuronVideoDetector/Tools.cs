@@ -276,7 +276,6 @@ namespace NeuronVideoDetector
               Deviation[k] = Math.Sqrt(D / (n - 2));
             }
 
-
             Min = Deviation[0];
             int P = 0;
             if (Deviation[1] < Min) { Min = Deviation[1]; P = 1; }
@@ -499,6 +498,7 @@ namespace NeuronVideoDetector
           }
         return result;
       }
+
 
     }
   }

@@ -12,3 +12,17 @@ C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronV
 C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.exe
 C:\Users\Admin\Documents\Visual Studio 2012\Projects\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.pdb
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\NeuronVideoDetector.exe
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\NeuronVideoDetector.pdb
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\Emgu.CV.UI.dll
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\Emgu.CV.World.dll
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\ZedGraph.dll
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\Emgu.CV.UI.xml
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\Emgu.CV.World.xml
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\ZedGraph.xml
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\bin\Release\zh-CN\ZedGraph.resources.dll
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.MainForm.resources
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.Properties.Resources.resources
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.csproj.GenerateResource.Cache
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.exe
+C:\Users\Админ\Desktop\НИР\проекты VS\NeuronVideoDetector\NeuronVideoDetector\obj\Release\NeuronVideoDetector.pdb
