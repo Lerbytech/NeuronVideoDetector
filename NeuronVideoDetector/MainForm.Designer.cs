@@ -61,6 +61,8 @@
       this.CB_ShowCenters_Right = new System.Windows.Forms.CheckBox();
       this.RB_Colorize = new System.Windows.Forms.RadioButton();
       this.label2 = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
+      this.label4 = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.IB_Video)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.IB_Neurons)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.IB_Heatmap)).BeginInit();
@@ -427,11 +429,30 @@
       this.label2.TabIndex = 30;
       this.label2.Text = "Input Video:";
       // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(12, 102);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(52, 17);
+      this.label3.TabIndex = 31;
+      this.label3.Text = "PTime:";
+      // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(34, 127);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(0, 17);
+      this.label4.TabIndex = 32;
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1422, 800);
+      this.Controls.Add(this.label4);
+      this.Controls.Add(this.label3);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.groupBox3);
       this.Controls.Add(this.groupBox2);
@@ -493,6 +514,8 @@
     private System.Windows.Forms.CheckBox CB_ShowCenters_Right;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.RadioButton RB_Kuwahara;
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label label4;
   }
 }
 

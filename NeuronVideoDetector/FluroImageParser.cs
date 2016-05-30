@@ -267,13 +267,23 @@ namespace NeuronVideoDetector
         //Kuwahara
 
         // читы
-        KuwaharaMode K = KuwaharaMode.ExternalKuwahara;
+        KuwaharaMode K = KuwaharaMode.NormalKuwahara;
         //
 
         if (K == KuwaharaMode.NormalKuwahara)
         {
-          Tools.Filters.KuwaharaFilter(TMP_Img);
-          IMAGES.Img_Kuwahara = TMP_Img;
+          IMAGES.Img_Kuwahara  = Tools.Filters.KuwaharaFilter(TMP_Img);
+          /*
+          float[,] matrixKerA = new float[,] { { 2,  1,  0}, 
+                                              { 1,  1, -1}, 
+                                              { 0, -1, -2}};
+          ConvolutionKernelF KA = new ConvolutionKernelF(matrixKerA, new Point(1, 1));
+          Image<Gray, float> src1 = TMP_Img.Convert<Gray, float>();
+          src1 = src1.Convolution(KA);
+           
+          TMP_Img = src1.Convert<Gray, Byte>();
+           * */
+          TMP_Img = IMAGES.Img_Kuwahara;
         }
         else if (K == KuwaharaMode.ExternalKuwahara)
         {
@@ -296,7 +306,7 @@ namespace NeuronVideoDetector
 
       if (Params.doChooseImageLayers)
       {
-        separation_values = Tools.Separation.CalculateSeparationValues(TMP_Img, (int)Threshold_median, out MaxValue); // 2 ms FUCK YEAH!!!!!!
+       
         IMAGES.LayersList = Tools.Separation.SeparateToLayers(TMP_Img, separation_values, (int)Threshold_median); // 5-9 ms
       }
       //elseIMAGES.LayersList = null;

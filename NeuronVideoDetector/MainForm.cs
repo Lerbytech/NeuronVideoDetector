@@ -96,7 +96,7 @@ namespace NeuronVideoDetector
         tt.Restart();
       }
       */
-      #region RENDERER_KEFT
+      #region RENDERER_LEFT
       //LeftImage = new Image<Bgr, byte>(IMAGES.Img.Width, IMAGES.Img.Height, new Bgr(0, 0, 0));
       #region Left
       CvInvoke.InsertChannel(IMAGES.Img, LeftImage, 0);
@@ -137,9 +137,7 @@ namespace NeuronVideoDetector
       }
       #endregion
 
-      IB_Neurons.Image = LeftImage.Resize(IB_Neurons.Width, IB_Neurons.Height, Inter.Nearest);
-      IB_Video.Image = IMAGES.Img.Resize(IB_Video.Width, IB_Video.Height, Inter.Nearest);
-      IB_Heatmap.Image = RightImage.Resize(IB_Neurons.Width, IB_Neurons.Height, Inter.Nearest);
+
       /*
       if (DEBUG)
       {
@@ -161,9 +159,18 @@ namespace NeuronVideoDetector
       */
       tt.Stop();
 //      LBL_FPS.Text = tt.ElapsedMilliseconds.ToString(); 
-
+      
      if (LBL_FPS.InvokeRequired) LBL_FPS.Invoke(new Action<string>((s) => LBL_FPS.Text = s), ((int)(1000/tt.ElapsedMilliseconds)).ToString());
      else LBL_FPS.Text = ((int)(1000/tt.ElapsedMilliseconds)).ToString();
+
+     if (label4.InvokeRequired) label4.Invoke(new Action<string>((s) => label4.Text = s),  tt.ElapsedMilliseconds.ToString());
+     else label4.Text = tt.ElapsedMilliseconds.ToString();
+
+
+     if (tt.ElapsedMilliseconds < 40) Thread.Sleep(40 - (int)tt.ElapsedMilliseconds);
+     IB_Neurons.Image = LeftImage.Resize(IB_Neurons.Width, IB_Neurons.Height, Inter.Nearest);
+     IB_Video.Image = IMAGES.Img.Resize(IB_Video.Width, IB_Video.Height, Inter.Nearest);
+     IB_Heatmap.Image = RightImage.Resize(IB_Neurons.Width, IB_Neurons.Height, Inter.Nearest);
 
       //MessageBox.Show(output.ToString());
     }
